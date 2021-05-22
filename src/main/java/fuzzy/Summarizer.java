@@ -13,9 +13,19 @@ public class Summarizer {
     private GaussianFunction gaussianFunction = GaussianFunction.getInstance();
 
     private List<String> summarizerListNormal = new ArrayList<>(Arrays.asList("a few ","small amount of ","average amount of ","large amount of ","great number of "));
+    private List<String> summarizerListHeight = new ArrayList<>(Arrays.asList("quite short ","short ","medium-height ","height ","very height"));
+    private List<String> summarizerListWeight = new ArrayList<>(Arrays.asList("thin ","slim ","medium weight ","bonny ","stout "));
 
     public String getSummarizerListNormal(int index) {
         return summarizerListNormal.get(index);
+    }
+
+    public String getSummarizerListHeight(int index) {
+        return summarizerListHeight.get(index);
+    }
+
+    public String getSummarizerListWeight(int index) {
+        return summarizerListWeight.get(index);
     }
 
     public int calculateGamesPlayed(double x){
@@ -25,11 +35,8 @@ public class Summarizer {
         memberships.add(new Membership(triangularFunction.getMembership(30,44,57,x),2));
         memberships.add(new Membership(trapezoidalFunction.getMembership(47,57,64,74,x),3));
         memberships.add(new Membership(gaussianFunction.getMembership(64,85,x),4));
-        //System.out.println(Arrays.toString(memberships.toArray()));
         memberships.sort(Membership::compareTo);
-        //System.out.println(Arrays.toString(memberships.toArray()));
         memberships.removeIf(Membership -> Membership.getA() != memberships.get(memberships.size() -1).getA());
-        //System.out.println(Arrays.toString(memberships.toArray()));
         int rand = (int)(Math.random() * memberships.size());
         return memberships.get(rand).getId();
     }
