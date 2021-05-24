@@ -11,9 +11,9 @@ public class DataBase {
     public void connect() {
         try {
             String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=Basketball;integratedSecurity=true;";
-            String user = "sa";
-            String pass = "secret";
-            connection = DriverManager.getConnection(dbURL);
+            String user = "bazaKsr2";
+            String pass = "123456789";
+            connection = DriverManager.getConnection(dbURL,user,pass);
             if (connection != null) {
                 DatabaseMetaData dm = connection.getMetaData();
                 System.out.println("Driver name: " + dm.getDriverName());
@@ -33,6 +33,8 @@ public class DataBase {
             }
         }
     }
+
+
 
 
 }

@@ -31,11 +31,8 @@ public class Quantifier {
         memberships.add(new Membership(triangularFunction.getMembership(9000,10000,11000,x),5));
         memberships.add(new Membership(triangularFunction.getMembership(10000,11000,12700,x),6));
         memberships.add(new Membership(trapezoidalFunction.getMembership(12500,12700,14500,145000,x),7));
-        //System.out.println(Arrays.toString(memberships.toArray()));
         memberships.sort(Membership::compareTo);
-        //System.out.println(Arrays.toString(memberships.toArray()));
         memberships.removeIf(Membership -> Membership.getA() != memberships.get(memberships.size() -1).getA());
-        //System.out.println(Arrays.toString(memberships.toArray()));
         int rand = (int)(Math.random() * memberships.size());
         return memberships.get(rand).getId();
     }
